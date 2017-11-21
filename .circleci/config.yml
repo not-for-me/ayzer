@@ -3,11 +3,12 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/ayzer-app
+    working_directory: ~/ayzer
     docker:
       - image: circleci/node:7.10.0-browsers
     steps:
       - checkout
+      - run: cd ayzer-app
       - restore_cache:
           key: ayzer-{{ .Branch }}-{{ checksum "package.json" }}
       - run: npm install
