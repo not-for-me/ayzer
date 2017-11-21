@@ -9,11 +9,11 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: ayzer-{{ .Branch }}-{{ checksum "./ayzer-app/package.json" }}
-      - run: cd ayzer-app; npm install
+          key: ayzer-{{ .Branch }}-{{ checksum "./ayzer-workspace/package.json" }}
+      - run: cd ayzer-workspace; npm install --quite
       - save_cache:
-          key: ayzer-{{ .Branch }}-{{ checksum "./ayzer-app/package.json" }}
+          key: ayzer-{{ .Branch }}-{{ checksum "./ayzer-workspace/package.json" }}
           paths:
             - "node_modules"
-      - run: cd ayzer-app; xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
-      - run: cd ayzer-app; xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
+      - run: cd ayzer-workspace; xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
+      - run: cd ayzer-workspace; xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
