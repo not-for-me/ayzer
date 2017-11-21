@@ -3,18 +3,17 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/ayzer-app  
+    working_directory: ~/ayzer-app
     docker:
       - image: circleci/node:7.10.0-browsers
-
     steps:
       - checkout
       - restore_cache:
-        key: ayzer-{{ .Branch }}-{{ checksum "package.json" }}
+          key: ayzer-{{ .Branch }}-{{ checksum "package.json" }}
       - run: npm install
       - save_cache:
-        key: ayzer-{{ .Branch }}-{{ checksum "package.json" }}
-        paths:
-          - "node_modules"
+          key: ayzer-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - "node_modules"
       - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
       - run: xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
