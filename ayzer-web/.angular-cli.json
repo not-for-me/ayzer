@@ -8,7 +8,7 @@
     {
       "name": "ayzer-app",
       "root": "apps/ayzer-app/src",
-      "outDir": "dist/apps/ayzer-app",
+      "outDir": "../dist/ayzer-web",
       "assets": [
         "assets",
         "favicon.ico"
