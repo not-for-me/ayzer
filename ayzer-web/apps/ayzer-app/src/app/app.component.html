@@ -1,3 +1,20 @@
+<div *ngIf="isLoading" class="progress-bar-container">
+    <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</div>
+
 <mat-toolbar color="primary">
-    <span>{{title}}</span>
+    <button class="hamburger" [class.starting]="isStarting" mat-button (click)="sidenav.toggle()" title="Docs menu">
+        <mat-icon [ngClass]="{'sidenav-open': !isSideNaveOpen }">menu</mat-icon>
+    </button>
+    <a class="nav-link home" href="/">
+        <span>{{title}}</span>
+    </a>
 </mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav  mode="push" #sidenav>
+        <!-- sidenav content -->
+        <span>Temp sidebar</span>
+    </mat-sidenav>
+        <span>Main Container</span>
+    <!-- primary content -->
+</mat-sidenav-container>

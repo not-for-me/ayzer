@@ -28,7 +28,7 @@ describe('AppComponent', () => {
   });
 
   it('should display title in toolbar', () => {
-    const titleSpan = fixture.debugElement.query(By.css('mat-toolbar > span'));
+    const titleSpan = fixture.debugElement.query(By.css('.home > span'));
     const el = titleSpan.nativeElement;
     expect(el.textContent).toEqual(component.title);
   })
