@@ -9,6 +9,6 @@ describe('ayzer-app App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.text()).toContain('app works!');
+    expect(page.text()).toContain('Ayzer');
   });
 });
